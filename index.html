@@ -17,9 +17,12 @@
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
+    <!-- EmailJS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
     <style>
         :root {
-            /* Base Theme Colors (Option B: Tech Dark & Warm Wood Accent) */
+            /* Base Theme Colors (Tech Dark & Warm Wood Accent) */
             --bg-primary: #0b0f17;       /* Dark slate ink */
             --bg-secondary: #131b2e;     /* Deep tech navy */
             --bg-card: rgba(19, 27, 46, 0.75);
@@ -576,102 +579,102 @@
                     </div>
                 </div>
 
-                <!-- Right Form Panel -->
+                <!-- Right Form Panel with EmailJS Integration -->
                 <div class="lg:col-span-7">
                     <div class="glass-card rounded-3xl p-8 sm:p-10 border-slate-700">
                         
                         <!-- Form Switcher -->
                         <div class="grid grid-cols-2 gap-3 bg-brandDark p-2 rounded-2xl mb-8 border border-slate-800">
-                            <button onclick="switchFormTab('creator')" id="formTabCreator" class="py-3.5 rounded-xl text-sm sm:text-base font-bold transition-all bg-amber-500 text-slate-950 shadow">
+                            <button onclick="switchFormTab('creator')" id="formTabCreator" type="button" class="py-3.5 rounded-xl text-sm sm:text-base font-bold transition-all bg-amber-500 text-slate-950 shadow">
                                 ✍️ 創作者 / 投稿諮詢
                             </button>
-                            <button onclick="switchFormTab('business')" id="formTabBusiness" class="py-3.5 rounded-xl text-sm sm:text-base font-bold transition-all text-slate-400 hover:text-slate-200">
+                            <button onclick="switchFormTab('business')" id="formTabBusiness" type="button" class="py-3.5 rounded-xl text-sm sm:text-base font-bold transition-all text-slate-400 hover:text-slate-200">
                                 🤝 企業 / IP 合作洽談
                             </button>
                         </div>
 
                         <!-- Form: Author Submission -->
-                        <form id="creatorForm" class="space-y-5" onsubmit="handleFormSubmit(event, 'creator')">
+                        <form id="creatorForm" class="space-y-5" onsubmit="handleEmailJSSubmit(event, 'creator')">
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
                                 <div>
                                     <label class="block text-sm font-bold text-slate-300 mb-1.5">姓名 / 筆名 *</label>
-                                    <input type="text" required placeholder="例如：張作家" class="w-full px-5 py-4 rounded-xl bg-brandDark border border-slate-700 text-slate-100 text-base focus:outline-none focus:border-amber-500 transition">
+                                    <input type="text" id="creator_name" required placeholder="例如：張作家" class="w-full px-5 py-4 rounded-xl bg-brandDark border border-slate-700 text-slate-100 text-base focus:outline-none focus:border-amber-500 transition">
                                 </div>
                                 <div>
                                     <label class="block text-sm font-bold text-slate-300 mb-1.5">電子信箱 *</label>
-                                    <input type="email" required placeholder="author@example.com" class="w-full px-5 py-4 rounded-xl bg-brandDark border border-slate-700 text-slate-100 text-base focus:outline-none focus:border-amber-500 transition">
+                                    <input type="email" id="creator_email" required placeholder="author@example.com" class="w-full px-5 py-4 rounded-xl bg-brandDark border border-slate-700 text-slate-100 text-base focus:outline-none focus:border-amber-500 transition">
                                 </div>
                             </div>
 
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
                                 <div>
                                     <label class="block text-sm font-bold text-slate-300 mb-1.5">作品名稱 *</label>
-                                    <input type="text" required placeholder="例如：《山海的記憶》" class="w-full px-5 py-4 rounded-xl bg-brandDark border border-slate-700 text-slate-100 text-base focus:outline-none focus:border-amber-500 transition">
+                                    <input type="text" id="creator_title" required placeholder="例如：《山海的記憶》" class="w-full px-5 py-4 rounded-xl bg-brandDark border border-slate-700 text-slate-100 text-base focus:outline-none focus:border-amber-500 transition">
                                 </div>
                                 <div>
                                     <label class="block text-sm font-bold text-slate-300 mb-1.5">預期合作項目 *</label>
-                                    <select class="w-full px-5 py-4 rounded-xl bg-brandDark border border-slate-700 text-slate-100 text-base focus:outline-none focus:border-amber-500 transition">
-                                        <option>AI 多國語言文學翻譯</option>
-                                        <option>影視 / 動漫改編提案</option>
-                                        <option>遊戲 / 劇本殺 IP 授權</option>
-                                        <option>全方位 IP 合作計畫</option>
+                                    <select id="creator_service" class="w-full px-5 py-4 rounded-xl bg-brandDark border border-slate-700 text-slate-100 text-base focus:outline-none focus:border-amber-500 transition">
+                                        <option value="AI 多國語言文學翻譯">AI 多國語言文學翻譯</option>
+                                        <option value="影視 / 動漫改編提案">影視 / 動漫改編提案</option>
+                                        <option value="遊戲 / 劇本殺 IP 授權">遊戲 / 劇本殺 IP 授權</option>
+                                        <option value="全方位 IP 合作計畫">全方位 IP 合作計畫</option>
                                     </select>
                                 </div>
                             </div>
 
                             <div>
                                 <label class="block text-sm font-bold text-slate-300 mb-1.5">作品簡介與故事摘要 *</label>
-                                <textarea rows="4" required placeholder="請簡述故事核心背景、類型與亮點..." class="w-full px-5 py-4 rounded-xl bg-brandDark border border-slate-700 text-slate-100 text-base focus:outline-none focus:border-amber-500 transition"></textarea>
+                                <textarea id="creator_summary" rows="4" required placeholder="請簡述故事核心背景、類型與亮點..." class="w-full px-5 py-4 rounded-xl bg-brandDark border border-slate-700 text-slate-100 text-base focus:outline-none focus:border-amber-500 transition"></textarea>
                             </div>
 
                             <div>
                                 <label class="block text-sm font-bold text-slate-300 mb-1.5">試讀檔或雲端連結（選填）</label>
-                                <input type="url" placeholder="https://drive.google.com/..." class="w-full px-5 py-4 rounded-xl bg-brandDark border border-slate-700 text-slate-100 text-base focus:outline-none focus:border-amber-500 transition">
+                                <input type="url" id="creator_link" placeholder="https://drive.google.com/..." class="w-full px-5 py-4 rounded-xl bg-brandDark border border-slate-700 text-slate-100 text-base focus:outline-none focus:border-amber-500 transition">
                             </div>
 
-                            <button type="submit" class="w-full py-4 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-bold rounded-xl shadow-lg shadow-amber-500/20 transition-all text-base flex items-center justify-center gap-3">
+                            <button type="submit" id="creatorSubmitBtn" class="w-full py-4 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-bold rounded-xl shadow-lg shadow-amber-500/20 transition-all text-base flex items-center justify-center gap-3">
                                 <i data-lucide="send" class="w-5 h-5"></i>
-                                <span>送出創作者提案</span>
+                                <span>送出創作者提案 (即時傳送至 Email)</span>
                             </button>
                         </form>
 
                         <!-- Form: Business Partner -->
-                        <form id="businessForm" class="space-y-5 hidden" onsubmit="handleFormSubmit(event, 'business')">
+                        <form id="businessForm" class="space-y-5 hidden" onsubmit="handleEmailJSSubmit(event, 'business')">
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
                                 <div>
                                     <label class="block text-sm font-bold text-slate-300 mb-1.5">貴公司 / 單位名稱 *</label>
-                                    <input type="text" required placeholder="例如：某某影視製作公司" class="w-full px-5 py-4 rounded-xl bg-brandDark border border-slate-700 text-slate-100 text-base focus:outline-none focus:border-cyan-500 transition">
+                                    <input type="text" id="business_company" required placeholder="例如：某某影視製作公司" class="w-full px-5 py-4 rounded-xl bg-brandDark border border-slate-700 text-slate-100 text-base focus:outline-none focus:border-cyan-500 transition">
                                 </div>
                                 <div>
                                     <label class="block text-sm font-bold text-slate-300 mb-1.5">聯絡人姓名與職稱 *</label>
-                                    <input type="text" required placeholder="陳總監" class="w-full px-5 py-4 rounded-xl bg-brandDark border border-slate-700 text-slate-100 text-base focus:outline-none focus:border-cyan-500 transition">
+                                    <input type="text" id="business_contact" required placeholder="陳總監" class="w-full px-5 py-4 rounded-xl bg-brandDark border border-slate-700 text-slate-100 text-base focus:outline-none focus:border-cyan-500 transition">
                                 </div>
                             </div>
 
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
                                 <div>
                                     <label class="block text-sm font-bold text-slate-300 mb-1.5">官方 Email *</label>
-                                    <input type="email" required placeholder="partner@company.com" class="w-full px-5 py-4 rounded-xl bg-brandDark border border-slate-700 text-slate-100 text-base focus:outline-none focus:border-cyan-500 transition">
+                                    <input type="email" id="business_email" required placeholder="partner@company.com" class="w-full px-5 py-4 rounded-xl bg-brandDark border border-slate-700 text-slate-100 text-base focus:outline-none focus:border-cyan-500 transition">
                                 </div>
                                 <div>
                                     <label class="block text-sm font-bold text-slate-300 mb-1.5">合作領域 *</label>
-                                    <select class="w-full px-5 py-4 rounded-xl bg-brandDark border border-slate-700 text-slate-100 text-base focus:outline-none focus:border-cyan-500 transition">
-                                        <option>影視 / 劇集 IP 採購與改編</option>
-                                        <option>遊戲 / 動漫 IP 開發</option>
-                                        <option>海外出版與翻譯發行</option>
-                                        <option>技術導入與策略合作</option>
+                                    <select id="business_service" class="w-full px-5 py-4 rounded-xl bg-brandDark border border-slate-700 text-slate-100 text-base focus:outline-none focus:border-cyan-500 transition">
+                                        <option value="影視 / 劇集 IP 採購與改編">影視 / 劇集 IP 採購與改編</option>
+                                        <option value="遊戲 / 動漫 IP 開發">遊戲 / 動漫 IP 開發</option>
+                                        <option value="海外出版與翻譯發行">海外出版與翻譯發行</option>
+                                        <option value="技術導入與策略合作">技術導入與策略合作</option>
                                     </select>
                                 </div>
                             </div>
 
                             <div>
                                 <label class="block text-sm font-bold text-slate-300 mb-1.5">合作需求與題材偏好 *</label>
-                                <textarea rows="4" required placeholder="請說明貴單位正在尋找的題材類型（如：懸疑科幻、職人溫馨、奇幻魔幻）..." class="w-full px-5 py-4 rounded-xl bg-brandDark border border-slate-700 text-slate-100 text-base focus:outline-none focus:border-cyan-500 transition"></textarea>
+                                <textarea id="business_summary" rows="4" required placeholder="請說明貴單位正在尋找的題材類型（如：懸疑科幻、職人溫馨、奇幻魔幻）..." class="w-full px-5 py-4 rounded-xl bg-brandDark border border-slate-700 text-slate-100 text-base focus:outline-none focus:border-cyan-500 transition"></textarea>
                             </div>
 
-                            <button type="submit" class="w-full py-4 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold rounded-xl shadow-lg shadow-cyan-500/20 transition-all text-base flex items-center justify-center gap-3">
+                            <button type="submit" id="businessSubmitBtn" class="w-full py-4 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold rounded-xl shadow-lg shadow-cyan-500/20 transition-all text-base flex items-center justify-center gap-3">
                                 <i data-lucide="building-2" class="w-5 h-5"></i>
-                                <span>送出 IP 商務洽談諮詢</span>
+                                <span>送出 IP 商務洽談諮詢 (即時傳送至 Email)</span>
                             </button>
                         </form>
 
@@ -734,14 +737,15 @@
         </div>
     </footer>
 
+    <!-- Success Modal -->
     <div id="successModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center opacity-0 pointer-events-none transition-all duration-300 p-4">
         <div class="glass-card bg-brandNavy rounded-2xl max-w-md w-full p-8 text-center border-amber-500/40 transform scale-95 transition-transform duration-300">
             <div class="w-16 h-16 bg-amber-500/20 text-amber-400 rounded-full flex items-center justify-center mx-auto mb-4 border border-amber-500/30">
                 <i data-lucide="check-circle" class="w-8 h-8"></i>
             </div>
-            <h3 class="text-2xl font-serif-custom font-bold text-slate-100 mb-2">訊息已成功送出！</h3>
+            <h3 class="text-2xl font-serif-custom font-bold text-slate-100 mb-2">提案已成功寄出！</h3>
             <p class="text-slate-300 text-sm mb-6 leading-relaxed">
-                感謝您聯繫木典股份有限公司。我們的專案團隊已收到您的提案，將由專人與您聯繫（service@ots.tw）。
+                感謝您聯繫木典股份有限公司。系統已透過 EmailJS 將專案需求同步傳送至 <span class="text-amber-400 font-mono-custom">service@ots.tw</span>，我們將由專人與您聯繫。
             </p>
             <button id="closeModal" class="w-full py-3 bg-amber-500 text-slate-950 font-bold rounded-xl shadow-lg">
                 確認關閉
@@ -750,9 +754,18 @@
     </div>
 
     <script>
+        // 1. Initialize EmailJS Key
+        const EMAILJS_PUBLIC_KEY = "mOn2gDA6qSOHgThd-";
+        const EMAILJS_SERVICE_ID = "service_qjxa88b";
+        const EMAILJS_TEMPLATE_ID = "template_kglykba";
+
+        if (typeof emailjs !== 'undefined') {
+            emailjs.init(EMAILJS_PUBLIC_KEY);
+        }
+
         lucide.createIcons();
 
-        // 1. Mobile Drawer Navigation
+        // 2. Mobile Drawer Navigation
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const mobileDrawer = document.getElementById('mobileDrawer');
         const mobileLinks = document.querySelectorAll('.mobile-link');
@@ -767,7 +780,7 @@
             });
         });
 
-        // 2. Dual Form Switcher
+        // 3. Dual Form Switcher
         function switchFormTab(track) {
             const creatorBtn = document.getElementById('formTabCreator');
             const businessBtn = document.getElementById('formTabBusiness');
@@ -775,19 +788,19 @@
             const businessForm = document.getElementById('businessForm');
 
             if (track === 'creator') {
-                creatorBtn.className = "py-2.5 rounded-lg text-xs sm:text-sm font-bold transition-all bg-amber-500 text-slate-950 shadow";
-                businessBtn.className = "py-2.5 rounded-lg text-xs sm:text-sm font-bold transition-all text-slate-400 hover:text-slate-200";
+                creatorBtn.className = "py-3.5 rounded-xl text-sm sm:text-base font-bold transition-all bg-amber-500 text-slate-950 shadow";
+                businessBtn.className = "py-3.5 rounded-xl text-sm sm:text-base font-bold transition-all text-slate-400 hover:text-slate-200";
                 creatorForm.classList.remove('hidden');
                 businessForm.classList.add('hidden');
             } else {
-                businessBtn.className = "py-2.5 rounded-lg text-xs sm:text-sm font-bold transition-all bg-cyan-500 text-slate-950 shadow";
-                creatorBtn.className = "py-2.5 rounded-lg text-xs sm:text-sm font-bold transition-all text-slate-400 hover:text-slate-200";
+                businessBtn.className = "py-3.5 rounded-xl text-sm sm:text-base font-bold transition-all bg-cyan-500 text-slate-950 shadow";
+                creatorBtn.className = "py-3.5 rounded-xl text-sm sm:text-base font-bold transition-all text-slate-400 hover:text-slate-200";
                 businessForm.classList.remove('hidden');
                 creatorForm.classList.add('hidden');
             }
         }
 
-        // 3. AI Playground Data and Logic
+        // 4. AI Playground Data and Logic
         const playgroundSamples = [
             {
                 original: "「雨水洗過的九份老街，赤紅燈籠在濕漉漉的石階上印出微弱的光斑。阿嬤坐在老舊木椅上，手裡搖著蒲扇，眼神穿過濛濛細雨，彷彿在等待一個不會歸來的人...」",
@@ -848,20 +861,63 @@
             }
         }
 
-        // Initialize Playground
         loadDemoSample(0);
 
-        // 4. Form Submission Modal Logic
+        // 5. Live EmailJS Integration Handler
         const successModal = document.getElementById('successModal');
         const closeModal = document.getElementById('closeModal');
 
-        function handleFormSubmit(e, formType) {
+        function handleEmailJSSubmit(e, formType) {
             e.preventDefault();
-            successModal?.classList.remove('opacity-0', 'pointer-events-none');
-            successModal?.querySelector('div')?.classList.remove('scale-95');
-            
-            if (formType === 'creator') document.getElementById('creatorForm')?.reset();
-            if (formType === 'business') document.getElementById('businessForm')?.reset();
+
+            const submitBtn = formType === 'creator' 
+                ? document.getElementById('creatorSubmitBtn') 
+                : document.getElementById('businessSubmitBtn');
+            const originalText = submitBtn.innerHTML;
+
+            submitBtn.innerHTML = `<span>傳送中 (Sending Email)...</span>`;
+            submitBtn.disabled = true;
+
+            let templateParams = {};
+
+            if (formType === 'creator') {
+                templateParams = {
+                    from_name: document.getElementById('creator_name').value,
+                    reply_to: document.getElementById('creator_email').value,
+                    identity_type: '創作者投稿提案',
+                    work_title: document.getElementById('creator_title').value,
+                    service_type: document.getElementById('creator_service').value,
+                    extra_info: document.getElementById('creator_link').value || '未提供連結',
+                    message: document.getElementById('creator_summary').value
+                };
+            } else {
+                templateParams = {
+                    from_name: document.getElementById('business_contact').value,
+                    reply_to: document.getElementById('business_email').value,
+                    identity_type: '企業 / IP 商務洽談',
+                    company_name: document.getElementById('business_company').value,
+                    service_type: document.getElementById('business_service').value,
+                    extra_info: `單位：${document.getElementById('business_company').value}`,
+                    message: document.getElementById('business_summary').value
+                };
+            }
+
+            emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
+                .then(function(response) {
+                    console.log('SUCCESS!', response.status, response.text);
+                    successModal?.classList.remove('opacity-0', 'pointer-events-none');
+                    successModal?.querySelector('div')?.classList.remove('scale-95');
+                    
+                    if (formType === 'creator') document.getElementById('creatorForm')?.reset();
+                    if (formType === 'business') document.getElementById('businessForm')?.reset();
+                }, function(error) {
+                    console.error('FAILED...', error);
+                    alert('信件傳送發生錯誤，請確認網路連線或寄至 service@ots.tw。\n錯誤細節：' + JSON.stringify(error));
+                })
+                .finally(function() {
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                });
         }
 
         closeModal?.addEventListener('click', () => {
@@ -869,7 +925,7 @@
             successModal?.querySelector('div')?.classList.add('scale-95');
         });
 
-        // 5. Canvas Particle Network
+        // 6. Particle Canvas Background Animation
         const canvas = document.getElementById('heroCanvas');
         if (canvas) {
             const ctx = canvas.getContext('2d');
