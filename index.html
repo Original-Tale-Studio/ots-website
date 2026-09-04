@@ -94,13 +94,17 @@
             -webkit-text-fill-color: transparent;
         }
 
-        .gradient-text-ai {
-            background: linear-gradient(135deg, #38bdf8 0%, #06b6d4 50%, #f59e0b 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        /* Navigation active indicator text color styling */
+        .nav-link {
+            transition: color 0.3s ease;
         }
 
-        /* Scrollbar */
+        .nav-link.active {
+            color: #38bdf8 !important;
+            font-weight: 700;
+        }
+
+        /* Custom Scrollbar */
         ::-webkit-scrollbar {
             width: 10px;
         }
@@ -162,18 +166,20 @@
                 </div>
             </a>
 
-            <!-- Desktop Navigation Links -->
+            <!-- Desktop Navigation Links (Clean Color Change Only) -->
             <nav class="hidden md:flex items-center gap-10 font-medium text-base text-slate-300">
-                <a href="#philosophy" class="hover:text-amber-400 transition-colors">公司理念</a>
-                <a href="#services" class="hover:text-amber-400 transition-colors">服務項目</a>
-                <a href="#playground" class="hover:text-amber-400 transition-colors flex items-center gap-2">
-                    <span class="relative flex h-2.5 w-2.5">
-                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
-                      <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-cyan-500"></span>
-                    </span>
+                <a href="#philosophy" data-nav="philosophy" class="nav-link hover:text-amber-400 transition-colors py-1">
+                    公司理念
+                </a>
+                <a href="#services" data-nav="services" class="nav-link hover:text-amber-400 transition-colors py-1">
+                    服務項目
+                </a>
+                <a href="#playground" data-nav="playground" class="nav-link hover:text-amber-400 transition-colors py-1">
                     AI 技術示範
                 </a>
-                <a href="#contact" class="hover:text-amber-400 transition-colors">創作者投稿</a>
+                <a href="#contact" data-nav="contact" class="nav-link hover:text-amber-400 transition-colors py-1">
+                    創作者投稿與洽談
+                </a>
             </nav>
 
             <!-- Dual Action CTA -->
@@ -220,7 +226,7 @@
             <!-- Particle Network Canvas -->
             <canvas id="heroCanvas" class="absolute inset-0 w-full h-full pointer-events-none z-0 opacity-40"></canvas>
 
-            <!-- Radial Background Light Glows -->
+            <!-- Radial Background Glows -->
             <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[650px] bg-amber-500/10 rounded-full blur-3xl pointer-events-none z-0"></div>
             <div class="absolute bottom-10 right-10 w-[450px] h-[450px] bg-cyan-500/10 rounded-full blur-3xl pointer-events-none z-0"></div>
 
@@ -668,7 +674,7 @@
                             </div>
 
                             <div>
-                                <label class="block text-sm font-bold text-slate-300 mb-1.5">合作需求與題材偏好 *</label>
+                                <label class="block text-sm font-bold text-slate-300 mb-1.5">合作需求與題材偏向 *</label>
                                 <textarea id="business_summary" rows="4" required placeholder="請說明貴單位正在尋找的題材類型（如：懸疑科幻、職人溫馨、奇幻魔幻）..." class="w-full px-5 py-4 rounded-xl bg-brandDark border border-slate-700 text-slate-100 text-base focus:outline-none focus:border-cyan-500 transition"></textarea>
                             </div>
 
@@ -737,7 +743,6 @@
         </div>
     </footer>
 
-    <!-- Success Modal -->
     <div id="successModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center opacity-0 pointer-events-none transition-all duration-300 p-4">
         <div class="glass-card bg-brandNavy rounded-2xl max-w-md w-full p-8 text-center border-amber-500/40 transform scale-95 transition-transform duration-300">
             <div class="w-16 h-16 bg-amber-500/20 text-amber-400 rounded-full flex items-center justify-center mx-auto mb-4 border border-amber-500/30">
@@ -765,7 +770,44 @@
 
         lucide.createIcons();
 
-        // 2. Mobile Drawer Navigation
+        // 2. Active Link Intersection Observer & Scroll Tracker (Text Color Highlight Only)
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        function setActiveNavLink(id) {
+            navLinks.forEach(link => {
+                if (link.getAttribute('data-nav') === id) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        }
+
+        const observerOptions = {
+            root: null,
+            rootMargin: '-20% 0px -70% 0px',
+            threshold: 0
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    setActiveNavLink(entry.target.id);
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => observer.observe(section));
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                const targetId = link.getAttribute('data-nav');
+                setActiveNavLink(targetId);
+            });
+        });
+
+        // 3. Mobile Drawer Navigation
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const mobileDrawer = document.getElementById('mobileDrawer');
         const mobileLinks = document.querySelectorAll('.mobile-link');
@@ -780,7 +822,7 @@
             });
         });
 
-        // 3. Dual Form Switcher
+        // 4. Dual Form Switcher
         function switchFormTab(track) {
             const creatorBtn = document.getElementById('formTabCreator');
             const businessBtn = document.getElementById('formTabBusiness');
@@ -800,7 +842,7 @@
             }
         }
 
-        // 4. AI Playground Data and Logic
+        // 5. AI Playground Data and Logic
         const playgroundSamples = [
             {
                 original: "「雨水洗過的九份老街，赤紅燈籠在濕漉漉的石階上印出微弱的光斑。阿嬤坐在老舊木椅上，手裡搖著蒲扇，眼神穿過濛濛細雨，彷彿在等待一個不會歸來的人...」",
@@ -863,7 +905,7 @@
 
         loadDemoSample(0);
 
-        // 5. Live EmailJS Integration Handler
+        // 6. Live EmailJS Integration Handler
         const successModal = document.getElementById('successModal');
         const closeModal = document.getElementById('closeModal');
 
@@ -884,7 +926,7 @@
                 templateParams = {
                     from_name: document.getElementById('creator_name').value,
                     reply_to: document.getElementById('creator_email').value,
-                    identity_type: '創作者投稿提案',
+                    identity_type: '創作者作品投稿',
                     work_title: document.getElementById('creator_title').value,
                     service_type: document.getElementById('creator_service').value,
                     extra_info: document.getElementById('creator_link').value || '未提供連結',
@@ -895,7 +937,7 @@
                     from_name: document.getElementById('business_contact').value,
                     reply_to: document.getElementById('business_email').value,
                     identity_type: '企業 / IP 商務洽談',
-                    company_name: document.getElementById('business_company').value,
+                    work_title: document.getElementById('business_company').value,
                     service_type: document.getElementById('business_service').value,
                     extra_info: `單位：${document.getElementById('business_company').value}`,
                     message: document.getElementById('business_summary').value
@@ -925,7 +967,7 @@
             successModal?.querySelector('div')?.classList.add('scale-95');
         });
 
-        // 6. Particle Canvas Background Animation
+        // 7. Particle Canvas Background Animation
         const canvas = document.getElementById('heroCanvas');
         if (canvas) {
             const ctx = canvas.getContext('2d');
