@@ -186,12 +186,18 @@
                     服務項目
                 </a>
                 <a href="#playground" data-nav="playground" class="nav-link hover:text-cyan-400 transition-colors py-1">
-                    技術架構
+                    AI 技術示範
                 </a>
                 <a href="#contact" data-nav="contact" class="nav-link hover:text-cyan-400 transition-colors py-1">
-                    創作者聯繫
+                    創作者投稿與合作
                 </a>
             </nav>
+
+            <div class="hidden lg:flex items-center gap-4">
+                <a href="#contact" onclick="switchFormTab('creator')" class="text-sm px-5 py-2.5 rounded-full border border-amber-500/40 text-amber-300 hover:bg-amber-500/10 transition-all font-medium">
+                    創作者投稿
+                </a>
+            </div>
 
             <!-- Mobile Drawer Button -->
             <button id="mobileMenuBtn" class="md:hidden p-2 text-slate-300 hover:text-white focus:outline-none">
@@ -206,9 +212,13 @@
                 <a href="#social-impact" class="mobile-link py-3 border-b border-slate-700/50">社會企業</a>
                 <a href="#services" class="mobile-link py-3 border-b border-slate-700/50">服務項目</a>
                 <a href="#playground" class="mobile-link py-3 border-b border-slate-700/50 text-cyan-400 flex items-center gap-3">
-                    <i data-lucide="sparkles" class="w-5 h-5"></i> 技術架構
+                    <i data-lucide="sparkles" class="w-5 h-5"></i> AI 技術轉化示範
                 </a>
-                <a href="#contact" class="mobile-link py-3 border-b border-slate-700/50">創作者聯繫</a>
+                <a href="#contact" class="mobile-link py-3 border-b border-slate-700/50">創作者投稿與合作</a>
+                <div class="flex flex-col gap-3 mt-5">
+                    <a href="#contact" onclick="switchFormTab('creator')" class="text-center py-3 rounded-xl border border-amber-500/40 text-amber-300 font-medium text-base">
+                        創作者投稿提案
+                    </a>
                 </div>
             </nav>
         </div>
@@ -241,7 +251,7 @@
 
                 <!-- Subheadline -->
                 <p class="max-w-4xl mx-auto text-lg sm:text-2xl text-slate-300 leading-relaxed font-light mb-14">
-                    木典（Original Tale Studio）整合語言模型、文學語境理解與跨媒體內容生成流程，協助台灣文學與現代台文創作者將作品轉化為多語版本與多樣化內容形式，讓在地好故事自由遨遊於全球視野與多維感官之中。
+                    木典（Original Tale Studio）運用前沿 AI 技術，協助台灣文學與現代台文創作者精準進行多國語言翻譯與跨媒體 IP 改編（影視、動漫、遊戲、劇本殺），讓在地好故事自由遨遊於全球視野與多維感官之中。
                 </p>
 
                 <!-- Primary Action Button -->
@@ -365,10 +375,10 @@
                             <span class="text-emerald-300">也讓一棵樹開始生長</span>
                         </h2>
                         <p class="text-slate-300 text-base sm:text-lg leading-relaxed font-light mb-5">
-                            木典相信，文化創新不只是作品本身，也是一種可以延展與回饋社群的方式。我們以「木」為名，將技術與內容服務的部分成果投入公益與教育，讓文學、語言與在地文化能夠持續生長。
+                            木典相信，企業的價值不只在於創造收入，也在於把收入轉化為下一個更好的開始。我們以「木」為名，將不同產品與服務的收入提撥一定比例投入社會公益，讓文化創新與土地、教育一起生長。
                         </p>
                         <p class="text-slate-400 text-sm sm:text-base leading-relaxed">
-                            我們重視技術在保留作品人文細節上的責任：從語言模型調校、文本轉寫到跨媒體內容生成，每一步都以作品原始意圖為核心，讓技術成為創作的延伸，而不是取代創作者的聲音。
+                            每項產品在合作前說明公益回饋方向與提撥比例，並在專案完成後揭露實際投入成果。比例會依產品成本與合作模式訂定，透明可追溯，讓創作者、合作夥伴與客戶都知道自己的選擇如何累積成改變。
                         </p>
                     </div>
 
@@ -409,19 +419,16 @@
         <section id="services" class="py-24 bg-slate-900/60 border-y border-slate-800 relative">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 
-                <div class="max-w-3xl mb-16">
+                <div class="text-center max-w-3xl mx-auto mb-16">
                     <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-400 text-xs font-mono-custom uppercase tracking-widest border border-cyan-500/20 mb-3">
-                        OUR SERVICES · 我們的服務
+                        OUR SERVICES
                     </div>
                     <h2 class="text-3xl sm:text-4xl font-serif-custom font-bold text-slate-100">
                         木典技術輔助與核心服務
                     </h2>
                     <p class="text-slate-400 mt-4 text-base font-light">
-                        以文學語境 AI 為核心引擎，整合語言模型調校、內容生成與跨媒體轉化流程，提供更適合台灣文學與台文創作的翻譯與發展支持。
+                        以文學語境 AI 為核心引擎，提供多國文字翻譯、影視劇本轉化與商業授權對接等實作服務。
                     </p>
-                    <div class="mt-6 text-sm text-slate-300 leading-relaxed">
-                        技術方向涵蓋：台文語境理解、跨語言翻譯、文學風格保留、內容大綱生成與概念視覺發想，目標是讓創作流程更流暢，同時保有作品本身的語感與人文細節。
-                    </div>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -466,15 +473,15 @@
                                 <i data-lucide="cpu" class="w-7 h-7"></i>
                             </div>
                             <h3 class="text-xl font-serif-custom font-bold text-slate-100 mb-3 group-hover:text-cyan-400 transition-colors">
-                                2. 作品轉化與內容發想
+                                2. IP 跨界改編與內容生成
                             </h3>
                             <p class="text-slate-400 text-sm leading-relaxed mb-6">
-                                將小說文本轉化為更具展示力的版本，協助生成分場概念、角色關係與視覺發想，讓作品更容易被看見與理解。
+                                快速拆解小說文字並生成影視分集大綱、角色人物關係圖與視覺概念提案包，大幅降低評估成本。
                             </p>
                             <ul class="space-y-2 text-xs text-slate-300 mb-8">
                                 <li class="flex items-center gap-2">
                                     <i data-lucide="check-circle-2" class="w-4 h-4 text-cyan-400"></i>
-                                    自動化生成內容大綱與敘事重點
+                                    自動化生成影視劇本大綱
                                 </li>
                                 <li class="flex items-center gap-2">
                                     <i data-lucide="check-circle-2" class="w-4 h-4 text-cyan-400"></i>
@@ -482,12 +489,12 @@
                                 </li>
                                 <li class="flex items-center gap-2">
                                     <i data-lucide="check-circle-2" class="w-4 h-4 text-cyan-400"></i>
-                                    跨媒體改編方向示範與發展雛形
+                                    動漫/遊戲/劇本殺改編方向示範
                                 </li>
                             </ul>
                         </div>
                         <a href="#playground" class="inline-flex items-center justify-between text-xs font-bold text-cyan-400 hover:text-cyan-300 pt-4 border-t border-slate-800">
-                            <span>查看作品轉化 Demo</span>
+                            <span>查看 IP 改編 Demo</span>
                             <i data-lucide="chevron-right" class="w-4 h-4"></i>
                         </a>
                     </div>
@@ -499,28 +506,28 @@
                                 <i data-lucide="handshake" class="w-7 h-7 text-amber-400"></i>
                             </div>
                             <h3 class="text-xl font-serif-custom font-bold text-slate-100 mb-3 group-hover:text-amber-300 transition-colors">
-                                3. 創作者資產與發表支援
+                                3. 創作者賦能與 IP 媒合
                             </h3>
                             <p class="text-slate-400 text-sm leading-relaxed mb-6">
-                                協助作者整理作品資料、強化數位資產，提供更完善的發表與推廣準備，讓創作更有機會被看見。
+                                為作者建構作品數位資產，對接國際代理商、出版商、影視製作公司與遊戲發行商。
                             </p>
                             <ul class="space-y-2 text-xs text-slate-300 mb-8">
                                 <li class="flex items-center gap-2">
                                     <i data-lucide="check-circle-2" class="w-4 h-4 text-amber-400"></i>
-                                    作品簡介與資料整理支援
+                                    國際展會與媒體版權推薦
                                 </li>
                                 <li class="flex items-center gap-2">
                                     <i data-lucide="check-circle-2" class="w-4 h-4 text-amber-400"></i>
-                                    版權與授權資訊的基礎說明
+                                    完善的法務與版權分潤保護
                                 </li>
                                 <li class="flex items-center gap-2">
                                     <i data-lucide="check-circle-2" class="w-4 h-4 text-amber-400"></i>
-                                    創作者工具與發表流程協助
+                                    創作者工具使用與作品支援
                                 </li>
                             </ul>
                         </div>
                         <a href="#contact" onclick="switchFormTab('creator')" class="inline-flex items-center justify-between text-xs font-bold text-amber-400 hover:text-amber-300 pt-4 border-t border-slate-800">
-                            <span>申請作品支持</span>
+                            <span>申請作品合作</span>
                             <i data-lucide="chevron-right" class="w-4 h-4"></i>
                         </a>
                     </div>
@@ -529,75 +536,76 @@
             </div>
         </section>
 
-        <section id="playground" class="py-28 border-t border-slate-800 relative">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="mb-10">
-                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-300 text-xs font-mono-custom uppercase tracking-widest border border-cyan-500/20 mb-4">
-                        PLATFORM ARCHITECTURE · 技術架構
-                    </div>
-                    <h2 class="text-3xl sm:text-5xl font-serif-custom font-bold text-slate-100 mt-0">
-                        AI-Native Literary Infrastructure
+        <section id="playground" class="py-28 px-6 sm:px-8 lg:px-12 max-w-7xl mx-auto">
+            <div class="glass-card rounded-3xl p-8 sm:p-12 border-amber-500/30 relative overflow-hidden">
+                
+                <div class="max-w-4xl mb-10">
+                    <span class="text-sm font-mono-custom text-cyan-400 tracking-widest uppercase">INTERACTIVE AI DEMONSTRATION</span>
+                    <h2 class="text-3xl sm:text-5xl font-serif-custom font-bold text-slate-100 mt-2">
+                        木典 AI IP 轉化實驗室
                     </h2>
-                    <p class="mt-2 text-sm uppercase tracking-[0.2em] text-slate-400 font-mono-custom">
-                        AI 文學基礎設施
-                    </p>
-                    <p class="text-slate-300 text-base sm:text-lg mt-3 max-w-3xl">
-                        從作品輸入到語境理解、翻譯生成與內容再製，整套流程以 AI 為核心，部署於雲端平台，支援跨語言與跨媒體的文學創作工作流。
+                    <p class="text-slate-300 text-base sm:text-lg mt-3">
+                        切換下方現代台文 (Taigi Han-lo) 散文/小說範例與輸出頁籤，預覽木典 AI 如何將在地文學文字轉化為英文翻譯、影視腳本與美術概念設定。
                     </p>
                 </div>
 
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-5 mb-2">
-                    <div class="p-6 rounded-2xl border border-slate-700 bg-slate-900/80 h-full flex flex-col">
-                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 text-amber-300 text-[10px] font-mono-custom uppercase tracking-[0.25em] border border-amber-500/20 mb-4 w-fit">
-                            AI INTAKE
-                        </div>
-                        <h3 class="text-xl sm:text-2xl font-serif-custom font-bold text-slate-100 mb-3 leading-tight">作品與語境接收</h3>
-                        <p class="text-slate-300 leading-relaxed">AI 協助分段、標註語境、管理術語與整理作品資料，讓後續生成流程保持一致性與可追溯性。</p>
-                    </div>
-
-                    <div class="p-6 rounded-2xl border border-slate-700 bg-slate-900/80 h-full flex flex-col">
-                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-300 text-[10px] font-mono-custom uppercase tracking-[0.25em] border border-cyan-500/20 mb-4 w-fit">
-                            AI CORE
-                        </div>
-                        <h3 class="text-xl sm:text-2xl font-serif-custom font-bold text-slate-100 mb-3 leading-tight">模型處理與校正</h3>
-                        <p class="text-slate-300 leading-relaxed">AI 負責文學理解、翻譯生成、品質檢查與內容重構，同時保留語感、節奏與風格。</p>
-                    </div>
-
-                    <div class="p-6 rounded-2xl border border-slate-700 bg-slate-900/80 h-full flex flex-col">
-                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-300 text-[10px] font-mono-custom uppercase tracking-[0.25em] border border-emerald-500/20 mb-4 w-fit">
-                            AI OUTPUT
-                        </div>
-                        <h3 class="text-xl sm:text-2xl font-serif-custom font-bold text-slate-100 mb-3 leading-tight">多版本交付</h3>
-                        <p class="text-slate-300 leading-relaxed">AI 生成譯本、簡化版與跨媒體素材，支援後續內容延伸與成品交付。</p>
-                    </div>
-
-                    <div class="p-6 rounded-2xl border border-slate-700 bg-slate-900/80 h-full flex flex-col">
-                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-violet-500/10 text-violet-300 text-[10px] font-mono-custom uppercase tracking-[0.25em] border border-violet-500/20 mb-4 w-fit">
-                            AI EXTENSION
-                        </div>
-                        <h3 class="text-xl sm:text-2xl font-serif-custom font-bold text-slate-100 mb-3 leading-tight">故事板與影像轉化</h3>
-                        <p class="text-slate-300 leading-relaxed">AI 進一步拆解場景、敘述與視覺提示，作為圖片、動畫與影像內容的基底。</p>
-                    </div>
+                <!-- Sample Selector -->
+                <div class="flex flex-wrap gap-4 mb-10">
+                    <button onclick="loadDemoSample(0)" id="sampleBtn0" class="sample-btn text-sm px-6 py-3.5 rounded-xl bg-amber-500 text-slate-950 font-bold transition">
+                        範例 A: 現代台文短篇《夜行雨港》（現代漢羅）
+                    </button>
+                    <button onclick="loadDemoSample(1)" id="sampleBtn1" class="sample-btn text-sm px-6 py-3.5 rounded-xl bg-slate-800 text-slate-300 border border-slate-700 hover:bg-slate-700 transition">
+                        範例 B: 海洋奇幻《島嶼語聲》（現代台文小說）
+                    </button>
                 </div>
+
+                <!-- Display Box -->
+                <div class="bg-slate-900/90 rounded-2xl p-6 sm:p-8 border border-slate-800">
+                    
+                    <!-- Output Tabs -->
+                    <div class="flex border-b border-slate-800 mb-8 gap-3 overflow-x-auto pb-3">
+                        <button onclick="switchPlaygroundTab('original')" id="playTabOriginal" class="play-tab px-5 py-3 rounded-xl text-sm font-bold bg-amber-500/20 text-amber-400 border border-amber-500/40 flex items-center gap-2 shrink-0">
+                            <i data-lucide="file-text" class="w-5 h-5"></i> 現代台文原著 (Taigi)
+                        </button>
+                        <button onclick="switchPlaygroundTab('en')" id="playTabEn" class="play-tab px-5 py-3 rounded-xl text-sm font-medium text-slate-400 hover:text-slate-200 flex items-center gap-2 shrink-0">
+                            <i data-lucide="globe" class="w-5 h-5"></i> AI 英文文學翻譯 (English Translation)
+                        </button>
+                        <button onclick="switchPlaygroundTab('script')" id="playTabScript" class="play-tab px-5 py-3 rounded-xl text-sm font-medium text-slate-400 hover:text-slate-200 flex items-center gap-2 shrink-0">
+                            <i data-lucide="clapperboard" class="w-5 h-5 text-cyan-400"></i> 影視分場腳本 (Screenplay Adaptation)
+                        </button>
+                        <button onclick="switchPlaygroundTab('concept')" id="playTabConcept" class="play-tab px-5 py-3 rounded-xl text-sm font-medium text-slate-400 hover:text-slate-200 flex items-center gap-2 shrink-0">
+                            <i data-lucide="image" class="w-5 h-5 text-cyan-400"></i> AI 概念視覺 Prompt (Concept Art)
+                        </button>
+                    </div>
+
+                    <!-- Content Display Area -->
+                    <div id="playgroundContent" class="min-h-[240px] text-slate-100 text-lg leading-relaxed font-serif-custom flex items-center">
+                        <!-- Content rendered via JS -->
+                    </div>
+
+                </div>
+
             </div>
         </section>
 
-        <section id="contact" class="py-28 border-t border-slate-800 relative">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="w-full text-left">
-                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 text-amber-400 text-xs font-mono-custom uppercase tracking-widest border border-amber-500/20 mb-4">
-                        GET IN TOUCH · 聯絡我們
+        <section id="contact" class="py-28 px-6 sm:px-8 lg:px-12 max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-14">
+                
+                <!-- Left Info Panel -->
+                <div class="lg:col-span-5 space-y-8">
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/10 text-amber-400 text-sm font-mono-custom uppercase tracking-widest border border-amber-500/20">
+                        GET IN TOUCH & PROPOSE
                     </div>
-
-                    <h2 class="text-3xl sm:text-5xl font-serif-custom font-bold text-slate-100 mt-0">
+                    
+                    <h2 class="text-3xl sm:text-5xl font-serif-custom font-bold text-slate-100">
                         開啟您的作品國際與 IP 轉化之旅
                     </h2>
 
-                    <p class="text-slate-300 text-base leading-relaxed mt-5">
-                        不論您是希望讓作品被更多人看見的台灣文學與台文創作者，或是正在尋找值得被轉譯與延伸的在地故事，木典歡迎您直接聯繫我們。
+                    <p class="text-slate-300 text-base leading-relaxed">
+                        不論您是尋求作品翻譯與 IP 改編的**台灣文學與台文創作者**，或是正在尋找優質在地故事的**影視公司、出版社與遊戲團隊**，木典誠摯歡迎您提出合作想法。
                     </p>
 
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mt-10 text-left">
+                    <div class="space-y-5 pt-4">
                         <div class="p-5 rounded-2xl bg-slate-800/80 border border-slate-700/60 flex items-center gap-5">
                             <div class="w-12 h-12 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center shrink-0">
                                 <i data-lucide="mail" class="w-6 h-6"></i>
@@ -628,14 +636,62 @@
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    <div class="mt-10 flex flex-wrap justify-center gap-4">
-                        <a href="mailto:service@ots.tw" class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-amber-500 text-slate-950 font-bold hover:bg-amber-400 transition-all">
-                            <i data-lucide="mail" class="w-5 h-5"></i>
-                            直接聯絡我們
-                        </a>
+                <!-- Right Form Panel -->
+                <div class="lg:col-span-7">
+                    <div class="glass-card rounded-3xl p-8 sm:p-10 border-slate-700">
+                        
+                        <div class="mb-8">
+                            <div class="inline-flex items-center gap-2 px-3 py-2 rounded-xl bg-amber-500/10 text-amber-400 border border-amber-500/20 text-sm font-bold">
+                                ✍️ 創作者 / 投稿合作
+                            </div>
+                        </div>
+
+                        <form id="contactForm" class="space-y-5" onsubmit="handleUnifiedFormSubmit(event)">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                <div>
+                                    <label id="lbl_name" class="block text-sm font-bold text-slate-300 mb-1.5">姓名 / 筆名 *</label>
+                                    <input type="text" id="input_name" required placeholder="例如：張作家" class="w-full px-5 py-4 rounded-xl bg-slate-900 border border-slate-700 text-slate-100 text-base focus:outline-none focus:border-amber-500 transition">
+                                </div>
+                                <div>
+                                    <label id="lbl_email" class="block text-sm font-bold text-slate-300 mb-1.5">電子信箱 *</label>
+                                    <input type="email" id="input_email" required placeholder="author@example.com" class="w-full px-5 py-4 rounded-xl bg-slate-900 border border-slate-700 text-slate-100 text-base focus:outline-none focus:border-amber-500 transition">
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                <div>
+                                    <label id="lbl_work_title" class="block text-sm font-bold text-slate-300 mb-1.5">作品名稱 *</label>
+                                    <input type="text" id="input_work_title" required placeholder="例如：《雨港暗夜》" class="w-full px-5 py-4 rounded-xl bg-slate-900 border border-slate-700 text-slate-100 text-base focus:outline-none focus:border-amber-500 transition">
+                                </div>
+                                <div>
+                                    <label id="lbl_service" class="block text-sm font-bold text-slate-300 mb-1.5">預期合作項目 *</label>
+                                    <select id="select_service" class="w-full px-5 py-4 rounded-xl bg-slate-900 border border-slate-700 text-slate-100 text-base focus:outline-none focus:border-amber-500 transition">
+                                        <!-- Options populated via JS -->
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label id="lbl_extra" class="block text-sm font-bold text-slate-300 mb-1.5">作品參考連結 / 試閱檔 (選填)</label>
+                                <input type="text" id="input_extra" placeholder="https://drive.google.com/..." class="w-full px-5 py-4 rounded-xl bg-slate-900 border border-slate-700 text-slate-100 text-base focus:outline-none focus:border-amber-500 transition">
+                            </div>
+
+                            <div>
+                                <label id="lbl_message" class="block text-sm font-bold text-slate-300 mb-1.5">作品簡介與故事摘要 *</label>
+                                <textarea id="input_message" rows="4" required placeholder="請簡述故事核心背景、類型與亮點..." class="w-full px-5 py-4 rounded-xl bg-slate-900 border border-slate-700 text-slate-100 text-base focus:outline-none focus:border-amber-500 transition"></textarea>
+                            </div>
+
+                            <button type="submit" id="submitBtn" class="w-full py-4 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-bold rounded-xl shadow-lg shadow-amber-500/20 transition-all text-base flex items-center justify-center gap-3">
+                                <i data-lucide="send" class="w-5 h-5"></i>
+                                                <span id="submitBtnText">送出創作者提案 (即時傳送至 Email)</span>
+                            </button>
+                        </form>
+
                     </div>
                 </div>
+
             </div>
         </section>
 
@@ -667,8 +723,8 @@
                         <li><a href="#philosophy" class="hover:text-cyan-400 transition">公司理念</a></li>
                         <li><a href="#social-impact" class="hover:text-emerald-300 transition">社會企業</a></li>
                         <li><a href="#services" class="hover:text-cyan-400 transition">服務項目</a></li>
-                        <li><a href="#playground" class="hover:text-cyan-400 transition">技術架構</a></li>
-                        <li><a href="#contact" class="hover:text-cyan-400 transition">創作者聯繫</a></li>
+                        <li><a href="#playground" class="hover:text-cyan-400 transition">AI 技術示範</a></li>
+                        <li><a href="#contact" class="hover:text-cyan-400 transition">創作者投稿與合作</a></li>
                     </ul>
                 </div>
 
