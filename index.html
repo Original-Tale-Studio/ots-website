@@ -193,13 +193,9 @@
                 </a>
             </nav>
 
-            <!-- Dual Action CTA -->
             <div class="hidden lg:flex items-center gap-4">
                 <a href="#contact" onclick="switchFormTab('creator')" class="text-sm px-5 py-2.5 rounded-full border border-amber-500/40 text-amber-300 hover:bg-amber-500/10 transition-all font-medium">
                     創作者投稿
-                </a>
-                <a href="#contact" onclick="switchFormTab('business')" class="text-sm px-5 py-2.5 rounded-full bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-bold shadow-md shadow-amber-500/20 hover:scale-105 transition-all">
-                    商務合作
                 </a>
             </div>
 
@@ -222,9 +218,6 @@
                 <div class="flex flex-col gap-3 mt-5">
                     <a href="#contact" onclick="switchFormTab('creator')" class="text-center py-3 rounded-xl border border-amber-500/40 text-amber-300 font-medium text-base">
                         創作者投稿提案
-                    </a>
-                    <a href="#contact" onclick="switchFormTab('business')" class="text-center py-3 rounded-xl bg-amber-500 text-slate-950 font-bold text-base">
-                        商務與 IP 合作
                     </a>
                 </div>
             </nav>
@@ -261,17 +254,11 @@
                     木典（Original Tale Studio）運用前沿 AI 技術，協助台灣文學與現代台文創作者精準進行多國語言翻譯與跨媒體 IP 改編（影視、動漫、遊戲、劇本殺），讓在地好故事自由遨遊於全球視野與多維感官之中。
                 </p>
 
-                <!-- Dual Path Action Buttons -->
-                <div class="flex flex-col sm:flex-row items-center justify-center gap-6 mb-20">
+                <!-- Primary Action Button -->
+                <div class="flex justify-center mb-20">
                     <a href="#contact" onclick="switchFormTab('creator')" class="w-full sm:w-auto px-10 py-5 rounded-2xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-bold text-lg shadow-xl shadow-amber-500/25 hover:shadow-amber-500/40 hover:-translate-y-1 transition-all flex items-center justify-center gap-4 group">
                         <i data-lucide="pen-tool" class="w-6 h-6"></i>
                         <span>我是創作者 · 申請作品合作</span>
-                        <i data-lucide="arrow-right" class="w-5 h-5 transition-transform group-hover:translate-x-1"></i>
-                    </a>
-
-                    <a href="#contact" onclick="switchFormTab('business')" class="w-full sm:w-auto px-10 py-5 rounded-2xl bg-slate-800 hover:bg-slate-700 border border-slate-700 hover:border-cyan-500/50 text-slate-100 font-semibold text-lg backdrop-blur-md hover:-translate-y-1 transition-all flex items-center justify-center gap-4 group">
-                        <i data-lucide="building-2" class="w-6 h-6 text-cyan-400"></i>
-                        <span>我是企業 / 製作方 · 申請 IP 授權合作</span>
                         <i data-lucide="arrow-right" class="w-5 h-5 transition-transform group-hover:translate-x-1"></i>
                     </a>
                 </div>
@@ -655,17 +642,12 @@
                 <div class="lg:col-span-7">
                     <div class="glass-card rounded-3xl p-8 sm:p-10 border-slate-700">
                         
-                        <!-- Track Switcher Header -->
-                        <div class="grid grid-cols-2 gap-3 bg-slate-900 p-2 rounded-2xl mb-8 border border-slate-800">
-                            <button onclick="switchFormTab('creator')" id="formTabCreator" type="button" class="py-3.5 rounded-xl text-sm sm:text-base font-bold transition-all bg-amber-500 text-slate-950 shadow">
+                        <div class="mb-8">
+                            <div class="inline-flex items-center gap-2 px-3 py-2 rounded-xl bg-amber-500/10 text-amber-400 border border-amber-500/20 text-sm font-bold">
                                 ✍️ 創作者 / 投稿合作
-                            </button>
-                            <button onclick="switchFormTab('business')" id="formTabBusiness" type="button" class="py-3.5 rounded-xl text-sm sm:text-base font-bold transition-all text-slate-400 hover:text-slate-200">
-                                🤝 企業 / IP 合作
-                            </button>
+                            </div>
                         </div>
 
-                        <!-- Single Unified Dynamic Form -->
                         <form id="contactForm" class="space-y-5" onsubmit="handleUnifiedFormSubmit(event)">
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
                                 <div>
@@ -847,66 +829,36 @@
             });
         });
 
-        // 4. Dual-Track Form Switcher Logic
-        let currentTrack = 'creator';
-
+        // 4. Creator Form Setup
         function switchFormTab(track) {
-            currentTrack = track;
-            const creatorBtn = document.getElementById('formTabCreator');
-            const businessBtn = document.getElementById('formTabBusiness');
-            
+            if (track !== 'creator') return;
+
             const lblName = document.getElementById('lbl_name');
             const lblEmail = document.getElementById('lbl_email');
             const lblWorkTitle = document.getElementById('lbl_work_title');
             const lblService = document.getElementById('lbl_service');
             const lblExtra = document.getElementById('lbl_extra');
             const lblMessage = document.getElementById('lbl_message');
-            
             const selectService = document.getElementById('select_service');
             const submitBtnText = document.getElementById('submitBtnText');
             const submitBtn = document.getElementById('submitBtn');
 
-            if (track === 'creator') {
-                creatorBtn.className = "py-3.5 rounded-xl text-sm sm:text-base font-bold transition-all bg-amber-500 text-slate-950 shadow";
-                businessBtn.className = "py-3.5 rounded-xl text-sm sm:text-base font-bold transition-all text-slate-400 hover:text-slate-200";
-                
-                lblName.innerText = "姓名 / 筆名 *";
-                lblEmail.innerText = "電子信箱 *";
-                lblWorkTitle.innerText = "作品名稱 *";
-                lblService.innerText = "預期合作項目 *";
-                lblExtra.innerText = "作品參考連結 / 試閱檔 (選填)";
-                lblMessage.innerText = "作品簡介與故事摘要 *";
+            lblName.innerText = "姓名 / 筆名 *";
+            lblEmail.innerText = "電子信箱 *";
+            lblWorkTitle.innerText = "作品名稱 *";
+            lblService.innerText = "預期合作項目 *";
+            lblExtra.innerText = "作品參考連結 / 試閱檔 (選填)";
+            lblMessage.innerText = "作品簡介與故事摘要 *";
 
-                selectService.innerHTML = `
-                    <option value="AI 多國語言文學翻譯">AI 多國語言文學翻譯</option>
-                    <option value="影視 / 動漫改編提案">影視 / 動漫改編提案</option>
-                    <option value="遊戲 / 劇本殺 IP 授權">遊戲 / 劇本殺 IP 授權</option>
-                    <option value="全方位 IP 合作計畫">全方位 IP 合作計畫</option>
-                `;
+            selectService.innerHTML = `
+                <option value="AI 多國語言文學翻譯">AI 多國語言文學翻譯</option>
+                <option value="影視 / 動漫改編提案">影視 / 動漫改編提案</option>
+                <option value="遊戲 / 劇本殺 IP 授權">遊戲 / 劇本殺 IP 授權</option>
+                <option value="全方位 IP 合作計畫">全方位 IP 合作計畫</option>
+            `;
 
-                submitBtnText.innerText = "送出創作者提案 (即時傳送至 Email)";
-                submitBtn.className = "w-full py-4 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-bold rounded-xl shadow-lg shadow-amber-500/20 transition-all text-base flex items-center justify-center gap-3";
-            } else {
-                businessBtn.className = "py-3.5 rounded-xl text-sm sm:text-base font-bold transition-all bg-cyan-500 text-slate-950 shadow";
-                creatorBtn.className = "py-3.5 rounded-xl text-sm sm:text-base font-bold transition-all text-slate-400 hover:text-slate-200";
-
-                    lblName.innerText = "姓名與職稱 *";
-                lblEmail.innerText = "官方/企業電子信箱 *";
-                lblWorkTitle.innerText = "貴公司 / 單位名稱 *";
-                lblService.innerText = "合作領域與模式 *";
-                lblExtra.innerText = "官方網站 / 簡介連結 (選填)";
-                lblMessage.innerText = "合作需求與題材偏向說明 *";
-
-                selectService.innerHTML = `
-                    <option value="影視 / 劇集 IP 採購與改編">影視 / 劇集 IP 採購與改編</option>
-                    <option value="遊戲 / 動漫 IP 開發">遊戲 / 動漫 IP 開發</option>
-                    <option value="海外出版與翻譯發行">海外出版與翻譯發行</option>
-                    <option value="平台整合與技術合作">平台整合與技術合作</option>
-                `;
-
-                submitBtnText.innerText = "送出 IP 商務合作提案 (即時傳送至 Email)";
-                submitBtn.className = "w-full py-4 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold rounded-xl shadow-lg shadow-cyan-500/20 transition-all text-base flex items-center justify-center gap-3";
-            }
+            submitBtnText.innerText = "送出創作者提案 (即時傳送至 Email)";
+            submitBtn.className = "w-full py-4 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-bold rounded-xl shadow-lg shadow-amber-500/20 transition-all text-base flex items-center justify-center gap-3";
         }
 
         switchFormTab('creator');
@@ -986,7 +938,7 @@
             submitBtnText.innerText = "傳送中 (Sending Email)...";
             submitBtn.disabled = true;
 
-                    const identityTypeStr = currentTrack === 'creator' ? '創作者作品投稿' : '企業 / IP 商務合作';
+                    const identityTypeStr = '創作者作品投稿';
 
             const templateParams = {
                 from_name: document.getElementById('input_name').value,
